@@ -1,0 +1,39 @@
+node_modules/
+.env
+logs/
+*.log
+archive/
+dist/
+coverage/
+.tmp/
+tmp/
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Database
+postgres-data/
+pgdata/
+*.sql
+*.sqlite
+*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.rar
+*.zip
+*.tar.gz
+
+# Claude Code
+claude-code-main/
+.claude/

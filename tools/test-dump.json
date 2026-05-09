@@ -1,0 +1,199 @@
+{
+  "metadata": {
+    "version": "0.3.26.05",
+    "exported_at": "2026-05-04T19:58:00Z",
+    "source": "test-data"
+  },
+  "acts": [
+    {
+      "act_id": "00000000-0000-0000-0000-000000000001",
+      "act_type": "EMISSION",
+      "actor_ok": "::alice::",
+      "target_ok": null,
+      "payload": {
+        "triads": ["T1", "T2"],
+        "burn_at": "2026-05-05T00:00:00Z",
+        "phase": "active",
+        "total_ue": 6
+      },
+      "refs": [],
+      "created_at": "2026-05-04T10:00:00Z"
+    },
+    {
+      "act_id": "00000000-0000-0000-0000-000000000002",
+      "act_type": "EMISSION",
+      "actor_ok": "::bob::",
+      "target_ok": null,
+      "payload": {
+        "triads": ["T3", "T4"],
+        "burn_at": "2026-05-05T00:00:00Z",
+        "phase": "active",
+        "total_ue": 6
+      },
+      "refs": [],
+      "created_at": "2026-05-04T11:00:00Z"
+    },
+    {
+      "act_id": "00000000-0000-0000-0000-000000000003",
+      "act_type": "TRANSFER",
+      "actor_ok": "::alice::",
+      "target_ok": "::bob::",
+      "payload": {
+        "ue_uuid": "10000000-0000-0000-0000-000000000001",
+        "ue_number": 1,
+        "triad": "T1",
+        "reason": "за помощь"
+      },
+      "refs": ["00000000-0000-0000-0000-000000000001"],
+      "created_at": "2026-05-04T12:00:00Z"
+    },
+    {
+      "act_id": "00000000-0000-0000-0000-000000000004",
+      "act_type": "TRANSFER",
+      "actor_ok": "::bob::",
+      "target_ok": "::alice::",
+      "payload": {
+        "ue_uuid": "10000000-0000-0000-0000-000000000007",
+        "ue_number": 7,
+        "triad": "T3",
+        "reason": "за идею"
+      },
+      "refs": ["00000000-0000-0000-0000-000000000002"],
+      "created_at": "2026-05-04T13:00:00Z"
+    }
+  ],
+  "ue_units": [
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000001",
+      "ue_number": 1,
+      "triad": "T1",
+      "actor_ok": "::alice::",
+      "status": "active",
+      "created_at": "2026-05-04T10:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000002",
+      "ue_number": 2,
+      "triad": "T1",
+      "actor_ok": "::alice::",
+      "status": "active",
+      "created_at": "2026-05-04T10:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000003",
+      "ue_number": 3,
+      "triad": "T1",
+      "actor_ok": "::alice::",
+      "status": "active",
+      "created_at": "2026-05-04T10:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000004",
+      "ue_number": 4,
+      "triad": "T2",
+      "actor_ok": "::alice::",
+      "status": "active",
+      "created_at": "2026-05-04T10:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000005",
+      "ue_number": 5,
+      "triad": "T2",
+      "actor_ok": "::alice::",
+      "status": "active",
+      "created_at": "2026-05-04T10:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000006",
+      "ue_number": 6,
+      "triad": "T2",
+      "actor_ok": "::alice::",
+      "status": "active",
+      "created_at": "2026-05-04T10:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000007",
+      "ue_number": 7,
+      "triad": "T3",
+      "actor_ok": "::bob::",
+      "status": "active",
+      "created_at": "2026-05-04T11:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000008",
+      "ue_number": 8,
+      "triad": "T3",
+      "actor_ok": "::bob::",
+      "status": "active",
+      "created_at": "2026-05-04T11:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000009",
+      "ue_number": 9,
+      "triad": "T3",
+      "actor_ok": "::bob::",
+      "status": "active",
+      "created_at": "2026-05-04T11:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000010",
+      "ue_number": 10,
+      "triad": "T4",
+      "actor_ok": "::bob::",
+      "status": "active",
+      "created_at": "2026-05-04T11:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000011",
+      "ue_number": 11,
+      "triad": "T4",
+      "actor_ok": "::bob::",
+      "status": "active",
+      "created_at": "2026-05-04T11:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "ue_uuid": "10000000-0000-0000-0000-000000000012",
+      "ue_number": 12,
+      "triad": "T4",
+      "actor_ok": "::bob::",
+      "status": "active",
+      "created_at": "2026-05-04T11:00:00Z",
+      "burn_at": "2026-05-05T00:00:00Z",
+      "emission_act_id": "00000000-0000-0000-0000-000000000002"
+    }
+  ],
+  "ok_identity": [
+    {
+      "ok_key": "::alice::",
+      "public_key": null,
+      "created_at": "2026-05-04T10:00:00Z"
+    },
+    {
+      "ok_key": "::bob::",
+      "public_key": null,
+      "created_at": "2026-05-04T11:00:00Z"
+    }
+  ]
+}

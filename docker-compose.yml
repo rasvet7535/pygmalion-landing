@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 15 (Alpine для минимального размера)
+  postgres:
+    image: postgres:15-alpine
+    container_name: pygmalion-db-v04
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: pygmalion_v04
+      POSTGRES_USER: pygmalion
+      POSTGRES_PASSWORD: pygmalion_secret_2026
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql-schema:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pygmalion -d pygmalion_v04"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Node.js Backend (Pygmalion API Gateway)
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pygmalion-backend-v04
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://pygmalion:pygmalion_secret_2026@postgres:5432/pygmalion_v04
+    ports:
+      - "3001:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app/backend
+      - ./tools:/app/tools
+      - ./docs:/app/docs
+    command: node backend/server.js
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  default:
+    name: pygmalion-network-v04
