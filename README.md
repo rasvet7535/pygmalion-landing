@@ -47,6 +47,15 @@ backend-v0.4.0-clean/
 ├── backend/
 │   ├── server.js           # API Gateway
 │   └── core/
+│       ├── canon/          # ★ Canon Layer (SSOT, 7 модулей)
+│       │   ├── index.js           # entry point
+│       │   ├── emission-policy.js # лимиты эмиссии
+│       │   ├── grammar.js         # Grammar Engine
+│       │   ├── ontology.js        # фазы, статусы, акты
+│       │   ├── temporal.js        # 24+4, burn, silence
+│       │   ├── reserved.js        # системный резерв
+│       │   ├── bridges.js         # bridge-symbols
+│       │   └── protocols.js       # протоколы доступа
 │       ├── metronome.js    # Метроном (канон времени)
 │       └── timeRhythm.js   # TimeRhythm (альт.)
 ├── sql-schema/
