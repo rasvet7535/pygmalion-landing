@@ -5,6 +5,17 @@ class I18n {
   constructor() {
     this.currentLang = this.getSavedLang() || 'ru';
     this.translations = {};
+    this.basePath = this.detectBasePath();
+  }
+
+  // Detect base path relative to this script's location
+  detectBasePath() {
+    const scripts = document.querySelectorAll('script[src*="i18n.js"]');
+    if (scripts.length) {
+      const src = scripts[0].getAttribute('src');
+      return src.substring(0, src.lastIndexOf('/') + 1);
+    }
+    return 'i18n/';
   }
 
   // Get saved language from localStorage
@@ -28,7 +39,7 @@ class I18n {
   // Load translation file
   async load(lang) {
     try {
-      const response = await fetch(`i18n/${lang}.json`);
+      const response = await fetch(`${this.basePath}${lang}.json`);
       if (!response.ok) throw new Error(`Failed to load ${lang}.json`);
       this.translations[lang] = await response.json();
       return true;

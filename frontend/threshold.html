@@ -238,29 +238,11 @@
   </div>
 
   <script>
-    // Инициализация i18n
-    const i18n = new I18n();
-    i18n.init().then(() => {
+    // Инициализация i18n (используем глобальный экземпляр)
+    window.i18n.init().then(() => {
       // Обновить placeholder
       const input = document.getElementById('ok_input');
-      input.placeholder = i18n.t('threshold.ok_placeholder');
-    });
-
-    // Переключение языка
-    document.querySelectorAll('[data-lang]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = e.target.getAttribute('data-lang');
-        i18n.setLanguage(lang);
-
-        // Обновить активный класс
-        document.querySelectorAll('[data-lang]').forEach(l => l.classList.remove('active'));
-        e.target.classList.add('active');
-
-        // Обновить placeholder
-        const input = document.getElementById('ok_input');
-        input.placeholder = i18n.t('threshold.ok_placeholder');
-      });
+      input.placeholder = window.i18n.t('threshold.ok_placeholder');
     });
 
     // Валидация О.К.
@@ -274,7 +256,7 @@
       crossBtn.disabled = !isValid;
 
       if (value && !isValid) {
-        statusMsg.textContent = i18n.t('threshold.error_format');
+        statusMsg.textContent = window.i18n.t('threshold.error_format');
         statusMsg.className = 'status-message error';
       } else {
         statusMsg.textContent = '';
@@ -289,7 +271,7 @@
       if (!okKey) return;
 
       crossBtn.disabled = true;
-      statusMsg.textContent = i18n.t('threshold.crossing');
+      statusMsg.textContent = window.i18n.t('threshold.crossing');
       statusMsg.className = 'status-message';
 
       try {
@@ -303,7 +285,7 @@
         const data = await response.json();
 
         if (response.ok) {
-          statusMsg.textContent = i18n.t('threshold.success');
+          statusMsg.textContent = window.i18n.t('threshold.success');
           statusMsg.className = 'status-message success';
 
           // Перенаправить на поле через 1.5 секунды
@@ -311,13 +293,13 @@
             window.location.href = `field.html?ok=${encodeURIComponent(okKey)}`;
           }, 1500);
         } else {
-          statusMsg.textContent = data.error || i18n.t('threshold.error_unknown');
+          statusMsg.textContent = data.error || window.i18n.t('threshold.error_unknown');
           statusMsg.className = 'status-message error';
           crossBtn.disabled = false;
         }
       } catch (error) {
         console.error('Threshold error:', error);
-        statusMsg.textContent = i18n.t('threshold.error_network');
+        statusMsg.textContent = window.i18n.t('threshold.error_network');
         statusMsg.className = 'status-message error';
         crossBtn.disabled = false;
       }
